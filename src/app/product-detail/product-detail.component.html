@@ -1,0 +1,15 @@
+<h2>Product Details</h2>
+<div class="product-list">
+    <mat-card *ngIf="prod" class="product-card">
+      <img mat-card-image [src]="prod.imageUrl" alt="Product Image">
+      <mat-card-content>
+        <h3>{{prod.name}}</h3>
+        <p>{{prod.description}}</p>
+        <p><strong>OFFER - </strong>{{prod.offer}}</p>
+        <p><strong>${{prod.price}}</strong></p>
+      </mat-card-content>
+    </mat-card>
+</div>
+   
+
+<input type="button" value="Back" (click)="goBack()" class="button-spacing">

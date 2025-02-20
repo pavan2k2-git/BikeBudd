@@ -1,0 +1,15 @@
+<div class="product-list">
+    <mat-card *ngFor="let bike of bikes" class="product-card">
+      <img mat-card-image [src]="bike.imageUrl" alt="Bike Image">
+      <mat-card-content>
+        <h3>{{bike.name}}</h3>
+        <p>{{bike.description}}</p>
+        <p><strong>OFFER - </strong>{{bike.offer}}</p>
+        <p><strong>${{bike.price}}</strong></p>
+        <button mat-raised-button color="accent">Add to Cart</button>
+      </mat-card-content>
+    </mat-card>
+</div>
+
+<input type="button" (click)="goBack()" value="Back" class="button-spacing">
+  

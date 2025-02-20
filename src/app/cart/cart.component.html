@@ -1,0 +1,28 @@
+<div *ngIf="cartItems.length > 0; else emptyCart">
+    <h2>Your cart</h2>
+    <mat-card *ngFor="let item of cartItems" class="product-card">
+      <img mat-card-image [src]="item.imageUrl" alt="Product Image">
+      <mat-card-content>
+        <h3>{{item.name}}</h3>
+        <p>{{item.description}}</p>
+        <p><strong>OFFER - </strong>{{item.offer}}</p>
+        <p><strong>${{item.price}}</strong></p>
+      </mat-card-content>
+      <mat-card-content>
+        <mat-checkbox [(ngModel)]="item.isSelected">Select for removal</mat-checkbox>
+      </mat-card-content>
+    </mat-card>
+</div>
+
+<div *ngIf="cartItems.length > 0">
+    <button (click)="clearCart()">Clear Cart</button>
+    <button (click)="removeSelectedItems()">Clear Selected Item</button>
+</div>
+
+        
+<ng-template #emptyCart>
+    <p>Your cart is empty. Add some products!</p>
+</ng-template>
+
+<input type="button" (click)="goBack()" value="Back" class="button-spacing">
+  

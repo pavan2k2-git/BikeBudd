@@ -1,0 +1,46 @@
+<h2>Please Login</h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+
+    <label>UserName</label>
+    <input type="text" name="UserName" formControlName="UserName"><br>
+
+    <div *ngIf="loginForm.get('UserName')?.touched && loginForm.get('UserName')?.errors?.['required']" class="error-message">
+      Username is required. 
+    </div>
+
+    <div *ngIf="loginForm.get('UserName')?.errors?.['minlength'] && loginForm.get('UserName')?.touched" class="error-message">
+      Minimum 5 characters required for username.
+    </div>
+
+    <label>Password</label>
+    <input type="password" name="Password" formControlName="Password"><br>
+
+    <div *ngIf="loginForm.get('Password')?.touched && loginForm.get('Password')?.errors?.['required']" class="error-message">
+      Password is required.
+    </div>
+
+    <div *ngIf="loginForm.get('Password')?.errors?.['minlength']" class="error-message">
+      Minimum 5 characters required for password.
+    </div>
+
+    <label>Role</label>
+    <select name="role" formControlName="Role">
+      <option value="" disabled selected>Select Role</option>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+
+    <div *ngIf="loginForm.get('Role')?.touched && loginForm.get('Role')?.errors?.['required']" class="error-message">
+      Role is required.
+    </div>
+
+    <input type="submit" [disabled]="loginForm.invalid">
+
+    <input type="button" (click)="authorize()" value="Authorize">
+
+    <input type="button" (click)="logOut()" value="LogOut">
+</form>
+
+
+
